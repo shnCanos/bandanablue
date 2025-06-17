@@ -12,11 +12,11 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: akmods
-    base: bazzite
-    install:
-      - common
-      - extra
+  # - type: akmods
+  #   base: bazzite
+  #   install:
+  #     - common
+  # - extra
   - type: files
     files:
       - source: system
@@ -31,6 +31,7 @@ modules:
         - atim/starship
         - fury-nushell.repo
         - lihaohong/chezmoi
+        - fmonteghetti/keyd
     install:
       packages:
         # Normal
@@ -38,11 +39,20 @@ modules:
         - nushell
         - chezmoi
         - neovim
+        - kde-partitionmanager
+        - tlp
         # KDE packages
         - dolphin
         - ark
         - gwenview
         - okular
+        # Keyboard
+        - fcitx5
+        - fcitx5-mozc
+        - keyd
+    group-install:
+      packages:
+        - virtualization
     remove:
       packages:
         - firefox
