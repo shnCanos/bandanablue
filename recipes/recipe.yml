@@ -14,7 +14,9 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   - type: akmods
     base: bazzite
-    install: []
+    install:
+      - common
+      - extra
   - type: files
     files:
       - source: system
@@ -36,7 +38,6 @@ modules:
         - nushell
         - chezmoi
         - neovim
-        - foot
         # KDE packages
         - dolphin
         - ark
