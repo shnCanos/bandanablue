@@ -29,7 +29,7 @@ modules:
     repos:
       copr:
         - atim/starship
-        - fury-nushell.repo
+        - atim/nushell
         - lihaohong/chezmoi
         - fmonteghetti/keyd
     install:
@@ -50,6 +50,7 @@ modules:
         - fcitx5
         - fcitx5-mozc
         - keyd
+
     group-install:
       packages:
         - virtualization
