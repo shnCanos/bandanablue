@@ -23,12 +23,9 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
   - type: script
     snippets:
-      - 'sh -c "$(curl -fsLS get.chezmoi.io)"'
-  # - type: systemd
-  #   system:
-  #     enabled:
-  #       - keyd
-  #       - nix-daemon
+      # Make /nix writeable
+      - "mkdir /var/nix"
+      - "ln -s /var/nix /nix"
   - type: dnf
     repos:
       copr:
@@ -65,7 +62,15 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
-
+  # - type: systemd
+  #   system:
+  #     enabled:
+  #       - keyd
+  #     disabled:
+  #       - flatpak-system-update.timer
+  #   user:
+  #     disabled:
+  #       - flatpak-user-update.timer
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
@@ -74,6 +79,23 @@ modules:
         - io.gitlab.librewolf-community
         - org.mozilla.firefox
         - org.freedesktop.Platform.ffmpeg-full
+        - org.kde.krita
+        - com.github.marhkb.Pods
+        - com.github.tchx84.Flatseal
+        - com.heroicgameslauncher.hgl
+        - com.obsproject.Studio
+        - com.spotify.Client
+        - com.usebottles.bottles
+        - dev.vencord.Vesktop
+        - io.github.arunsivaramanneo.GPUViewer
+        - io.missioncenter.MissionCenter
+        - org.gnome.Snapshot
+        - org.gnome.Solanum
+        - org.gnome.clocks
+        - org.kde.kdenlive
+        - org.kde.kolourpaint
+        - org.localsend.localsend_app
+        - org.libreoffice.LibreOffice
       remove:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
@@ -93,23 +115,3 @@ modules:
       google-fonts:
         - Roboto
         - Open Sans
-  - type: yafti
-    custom-flatpaks:
-      - Celluloid: io.github.celluloid_player.Celluloid
-      - Krita: org.kde.krita
-      - Pods: com.github.marhkb.Pods
-      - Flatseal: com.github.tchx84.Flatseal
-      - hgl: com.heroicgameslauncher.hgl
-      - Studio: com.obsproject.Studio
-      - Client: com.spotify.Client
-      - bottles: com.usebottles.bottles
-      - Vesktop: dev.vencord.Vesktop
-      - GPUViewer: io.github.arunsivaramanneo.GPUViewer
-      - MissionCenter: io.missioncenter.MissionCenter
-      - Snapshot: org.gnome.Snapshot
-      - Solanum: org.gnome.Solanum
-      - clocks: org.gnome.clocks
-      - kdenlive: org.kde.kdenlive
-      - kolourpaint: org.kde.kolourpaint
-      - LibreOffice: org.libreoffice.LibreOffice
-      - localsend_app: org.localsend.localsend_app
