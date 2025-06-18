@@ -21,6 +21,10 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  - type: script
+    snippets:
+      - "echo '/bin/nu' >> /etc/shells"
+      - "echo '/usr/bin/nu' >> /etc/shells"
   - type: dnf
     repos:
       copr:
