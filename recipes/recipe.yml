@@ -24,11 +24,11 @@ modules:
   - type: script
     snippets:
       - 'sh -c "$(curl -fsLS get.chezmoi.io)"'
-  - type: systemd
-    system:
-      enabled:
-        - keyd
-        - nix-daemon
+  # - type: systemd
+  #   system:
+  #     enabled:
+  #       - keyd
+  #       - nix-daemon
   - type: dnf
     repos:
       copr:
