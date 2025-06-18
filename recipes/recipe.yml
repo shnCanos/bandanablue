@@ -7,7 +7,7 @@ description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/wayblueorg/sway
-image-version: 41 # latest is also supported if you want new updates ASAP
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -21,11 +21,6 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-  # - type: script
-  #   snippets:
-  #    # Make /nix writeable
-  #    - "mkdir /var/nix"
-  #    - "ln -s /var/nix /nix"
   - type: dnf
     repos:
       copr:
@@ -62,15 +57,16 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
-  # - type: systemd
-  #   system:
-  #     enabled:
-  #       - keyd
-  #     disabled:
-  #       - flatpak-system-update.timer
-  #   user:
-  #     disabled:
-  #       - flatpak-user-update.timer
+  - type: systemd
+    system:
+      enabled:
+        - keyd
+        - tlp
+      disabled:
+        - flatpak-system-update.timer
+    user:
+      disabled:
+        - flatpak-user-update.timer
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
