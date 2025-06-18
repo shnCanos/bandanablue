@@ -28,7 +28,6 @@ modules:
         - atim/nushell
         - lihaohong/chezmoi
         - fmonteghetti/keyd
-        - petersen/nix
     install:
       packages:
         # Normal
@@ -48,7 +47,6 @@ modules:
         - fcitx5-mozc
         # Copr
         - keyd
-        - nix
 
     group-install:
       packages:
