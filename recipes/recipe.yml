@@ -59,6 +59,7 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
+        - tuned
   - type: systemd
     system:
       enabled:
