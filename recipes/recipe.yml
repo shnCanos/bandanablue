@@ -24,7 +24,11 @@ modules:
   - type: script
     snippets:
       - 'sh -c "$(curl -fsLS get.chezmoi.io)"'
-
+  - type: systemd
+    system:
+      enabled:
+        - keyd
+        - nix-daemon
   - type: dnf
     repos:
       copr:
@@ -32,6 +36,7 @@ modules:
         - atim/nushell
         - lihaohong/chezmoi
         - fmonteghetti/keyd
+        - petersen/nix
     install:
       packages:
         # Normal
@@ -49,7 +54,9 @@ modules:
         # Keyboard
         - fcitx5
         - fcitx5-mozc
+        # Copr
         - keyd
+        - nix
 
     group-install:
       packages:
